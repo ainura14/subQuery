@@ -267,8 +267,12 @@ where s.id is null;
     from student1 s
     group by s.gender;
 -- 5. Найдите студента с id 8 и обновите его данные
-   alter table student1
-   set column first_name = 'Ainura',
+UPDATE student1
+SET first_name = 'Ainura',
+last_name = 'Nusubalieva',
+gender = 'Female'
+WHERE id = 8;
+
 
 -- 6. Найдите самого старшего студента курса, id курса которого равна 5
 select max(2025 - extract(year from s.date_of_birth))
@@ -373,3 +377,4 @@ where l.lesson_name = 'Python kids';
 -- 6.Получить все уроки ментора, id которого равен 5
 select l.* from course1 c join mentor1 m on c.id = m.course_id
 join lesson1 l on c.id = l.course_id where m.id = 5;
+
