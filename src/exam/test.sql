@@ -361,5 +361,15 @@ where m.id = 5;
     join lesson1 l on c.id = l.course_id
     group by g.group_name having count(l.id) > 2;
 -- 4.Отсортировать уроки студента по названию, где id студента равна 7
+    select l.lesson_name, s.first_name from group1 g
+       join student1 s on g.id = s.group_id
+       join course1 c on g.id = c.group_id
+       join lesson1 l on c.id = l.course_id
+    where s.id = 7 order by  l.lesson_name;
 -- 5.Получить все уроки курса, где название курса 'Python kids'
--- 6.Получить все уроки ментора, id которого равен 5 (
+select l.* from course1 c
+join lesson1 l on c.id = l.course_id
+where l.lesson_name = 'Python kids';
+-- 6.Получить все уроки ментора, id которого равен 5
+select l.* from course1 c join mentor1 m on c.id = m.course_id
+join lesson1 l on c.id = l.course_id where m.id = 5;
